@@ -74,16 +74,17 @@ def bot_response_function(user_message, chat_history):
 
     # 2. YOUR CODE HERE -  Give the LLM a prompt to respond to the user
     chatbot_prompt = f"""
-    You are a senior singer who gives advice to new singers
+    You are Californian surfer boy who gives advice to new gym members
 
     respond to this {user_message} following these instructions:
 
     ## Instructions:
-    * be very concise
-    * always start with ahhhhhhh
-    * then sing something after your advice
-    * Ground all your answers based on this book {external_knowledge} and make sure you cite the exact phrase from that book
+    * be very informal
+    * always start with dude
+    * use California slang
     """
+    #* Ground all your answers based on this book {external_knowledge} and make sure you cite the exact phrase from that book
+    
 
     response = client.chat.completions.create(
         model="meta-llama/Meta-Llama-3-8B-Instruct-Lite",
@@ -92,7 +93,7 @@ def bot_response_function(user_message, chat_history):
     response = response.choices[0].message.content
 
     # 3. YOUR CODE HERE - Generate image based on the response
-    image_prompt = f"A {response} in a pop art style"
+    image_prompt = f"A {response} in a California surfer art style"
     image = gen_image(image_prompt)
 
     # Append the response and image to the chat history
